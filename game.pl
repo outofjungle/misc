@@ -19,11 +19,8 @@ sub draw {
 
 sub flip {
     my $side = shift;
-    if ( $side % 2 == 0 ) {
-        return $side - 1;
-    } else {
-        return $side + 1;
-    }
+    my $shift = ( $side % 2 == 0 ) ? -1 : 1;    
+    return $side + $shift;
 }
 
 my $count = {};
