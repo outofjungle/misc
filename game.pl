@@ -1,5 +1,6 @@
 #!/usr/bin/env perl
 
+use strict;
 use constant THRESHOLD => 10000;
 
 my $stack = {
@@ -25,16 +26,18 @@ sub flip {
 
 my $count = {};
 do {
-    $face = draw( $stack );
-    $color = $stack->{$face};
+    my $face = draw( $stack );
+    my $color = $stack->{$face};
     $count->{$color}->{count}++;
 
-    if ( $color eq 'red' ) {
-        $face = flip( $face );
-        $color = $stack->{$face};        
-        $count->{red}->{$color}->{count}++;
-    }
+    $face = flip( $face );
+    my $flip_color = $stack->{$face};        
+    $count->{$color}->{$flip_color}->{count}++;
+
 } while ( $count->{red}->{count} < THRESHOLD );
 
-printf ( "%f\n", $count->{red}->{red}->{count} / $count->{red}->{count} );
+printf (
+    "(# red second draw )/(# red first draw red ): %f\n",
+    $count->{red}->{red}->{count} / $count->{red}->{count} 
+);
 
