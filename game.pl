@@ -4,12 +4,12 @@ use strict;
 use constant THRESHOLD => 10000;
 
 my $stack = {
-    1 => 'red',
-    2 => 'red',
-    3 => 'red',
-    4 => 'blue',
-    5 => 'blue',
-    6 => 'blue',
+    1 => 'red',   # card 1, side A
+    2 => 'red',   # card 1, side B
+    3 => 'red',   # card 2, side A
+    4 => 'blue',  # card 2, side B
+    5 => 'blue',  # card 3, side A
+    6 => 'blue',  # card 3, side B
 };
 
 sub draw {
